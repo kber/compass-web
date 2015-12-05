@@ -2,22 +2,16 @@
   "name": "compass-web",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cp src/index.html public/ && webpack",
-    "start": "node dev-server.js"
+    "start": "cp src/index.html public/ && node dev-server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kber/compass-web.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kber/compass-web/issues"
-  },
-  "homepage": "https://github.com/kber/compass-web#readme",
   "dependencies": {
     "history": "1.13.1",
     "react": "0.14.3",
