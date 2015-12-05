@@ -8,9 +8,10 @@ const DEBUG = process.env.NODE_ENV !== 'production';
 const VERBOSE = false;
 
 let plugins = [
-  new webpack.DefinePlugin(Object.assign({
-    NODE_ENV: process.env.NODE_ENV
-  }, config)),
+  new webpack.DefinePlugin({
+    NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    API_BASE_URL: JSON.stringify(config.API_BASE_URL)
+  }),
   new webpack.optimize.CommonsChunkPlugin('vendor', '[name].js'),
   new webpack.optimize.LimitChunkCountPlugin({
     maxChunks: 1

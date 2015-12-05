@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cp src/index.html public/ && webpack"
+    "build": "cp src/index.html public/ && webpack",
+    "start": "node dev-server.js"
   },
   "repository": {
     "type": "git",

@@ -14,10 +14,10 @@ let store = compose(
   })
 )(createStore)(reducers);
 
-//if (NODE_ENV !== 'production' && module.hot) {
-//  module.hot.accept('./reducers', () => {
-//    store.replaceReducer(reducers);
-//  });
-//}
+if (NODE_ENV !== 'production' && module.hot) {
+  module.hot.accept('./reducers', () => {
+    store.replaceReducer(reducers);
+  });
+}
 
 export default store
