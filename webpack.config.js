@@ -9,7 +9,7 @@ const VERBOSE = false;
 
 let plugins = [
   new webpack.DefinePlugin({
-    NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    __DEVELOPMENT__: DEBUG,
     API_BASE_URL: JSON.stringify(config.API_BASE_URL)
   }),
   new webpack.optimize.CommonsChunkPlugin('vendor', '[name].js'),
