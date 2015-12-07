@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cp src/index.html public/ && webpack",
+    "build": "cp src/index.html public/ && NODE_ENV=production webpack",
     "start": "cp src/index.html public/ && node dev-server.js"
   },
   "repository": {

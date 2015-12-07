@@ -2,7 +2,6 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { reduxReactRouter } from 'redux-router';
 import createHistory from 'history/lib/createMemoryHistory';
-import createLogger from 'redux-logger';
 
 import reducers from './reducers';
 import routes from './routes';
@@ -10,6 +9,7 @@ import routes from './routes';
 let store;
 
 if (__DEVELOPMENT__) {
+  const createLogger = require('redux-logger').default;
   store = compose(
     applyMiddleware(thunk, createLogger()),
     reduxReactRouter({
