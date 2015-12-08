@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { reduxReactRouter } from 'redux-router';
-import createHistory from 'history/lib/createMemoryHistory';
+import createHistory from 'history/lib/createHashHistory';
 
 import reducers from './reducers';
 import routes from './routes';

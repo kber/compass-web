@@ -1,3 +1,11 @@
 .container {
-  padding-top: 20px;
+  display: flex;
+}
+
+.header {
+  height: 5rem;
+}
+
+.content {
+  flex: 1;
 }

@@ -2,21 +2,28 @@ import React, { Component } from 'react';
 import AppBar from 'react-toolbox/lib/app_bar';
 
 import style from './layout.scss';
+import LeftMenu from './components/left-menu';
 
 export default class extends Component {
   static propTypes = {
-    children : React.PropTypes.element
+    children: React.PropTypes.element
   }
 
   render() {
     return (
-      <div className={style.container}>
-        <AppBar fixed flat>
-          <a href="/home">React Toolbox Docs</a>
+      <div>
+        <AppBar className={style.header}>
+          <a href="/">Compass</a>
         </AppBar>
-        <div>
-          {this.props.children}
+
+        <div className={style.container}>
+          <LeftMenu/>
+
+          <div className={style.content}>
+            {this.props.children}
+          </div>
         </div>
+
         <footer>Footer</footer>
       </div>
     );
