@@ -11,11 +11,11 @@ let store;
 if (__DEVELOPMENT__) {
   const createLogger = require('redux-logger').default;
   store = compose(
-    applyMiddleware(thunk, createLogger()),
     reduxReactRouter({
       routes,
       createHistory
-    })
+    }),
+    applyMiddleware(thunk, createLogger())
   )(createStore)(reducers);
 
   if (module.hot) {
@@ -25,11 +25,11 @@ if (__DEVELOPMENT__) {
   }
 } else {
   store = compose(
-    applyMiddleware(thunk),
     reduxReactRouter({
       routes,
       createHistory
-    })
+    }),
+    applyMiddleware(thunk)
   )(createStore)(reducers);
 }
 

@@ -16,7 +16,9 @@ export default class extends Component {
         <h3>Profile Page</h3>
 
         <p>Name: {this.props.profile.name}</p>
-        <input type="text" onChange={(event) => this.props.updateName(event.target.value)}/>
+        <input type="text"
+               defaultValue={this.props.profile.name}
+               onChange={(event) => this.props.updateName(event.target.value)}/>
       </div>
     );
   }
