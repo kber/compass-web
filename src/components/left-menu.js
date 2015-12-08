@@ -28,7 +28,7 @@ export default class extends Component {
       );
     });
     return (
-      <aside>
+      <aside className={style.root}>
         <List selectable ripple>
           {menuItems}
         </List>
