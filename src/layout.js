@@ -24,7 +24,9 @@ export default class extends Component {
           </div>
         </div>
 
-        <footer>Footer</footer>
+        <footer className={style.footer}>
+          Kber &copy; 2015
+        </footer>
       </div>
     );
   }

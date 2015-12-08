@@ -1,3 +1,5 @@
+@import "./base";
+
 .container {
   display: flex;
 }
@@ -8,4 +10,11 @@
 
 .content {
   flex: 1;
+}
+
+.footer {
+  text-align: center;
+  background: $palette-grey-900;
+  color: $palette-grey-50;
+  padding: 3rem;
 }
