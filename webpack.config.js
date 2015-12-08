@@ -55,7 +55,7 @@ module.exports = {
   devtool: DEBUG ? 'cheap-module-eval-source-map' : false,
 
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.scss']
   },
 
   module: {
@@ -63,6 +63,9 @@ module.exports = {
       test: /\.jsx?$/,
       loader: 'babel-loader',
       exclude: /node_modules/
+    }, {
+      test: /\.scss$/,
+      loaders: ['style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]', 'sass']
     }]
   },
 
