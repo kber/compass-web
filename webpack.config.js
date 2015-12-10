@@ -40,7 +40,8 @@ module.exports = {
       'react-router',
       'redux',
       'redux-router',
-      'redux-thunk'
+      'redux-thunk',
+      'whatwg-fetch'
     ]
   },
 

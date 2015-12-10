@@ -7,7 +7,14 @@ import style from './layout.scss';
 import LeftMenu from './components/left-menu';
 
 @connect(
-  state => ({router: state.router})
+  state => {
+    return {
+      currentUser: Object.assign({},
+        state.currentUser,
+        state.users.find(user => user.id === state.currentUser.id)
+      )
+    };
+  }
 )
 export default class extends Component {
   static propTypes = {
@@ -19,6 +26,8 @@ export default class extends Component {
       <div>
         <AppBar className={style.header}>
           <Link to="/">Compass</Link>
+          Is Login: {this.props.currentUser.isLogin ? 'YES' : 'NO'}
+          Account Name: {this.props.currentUser.accountName}
         </AppBar>
 
         <div className={style.container}>

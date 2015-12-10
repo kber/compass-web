@@ -11,6 +11,9 @@ const menuConfig = [{
 }, {
   caption: 'Profile',
   path: '/profile'
+}, {
+  caption: 'Login',
+  path: '/login'
 }];
 
 export default class extends Component {
