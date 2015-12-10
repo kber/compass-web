@@ -1,15 +1,16 @@
 import { post } from '../libs/fetch';
+import { serverError } from './exception';
 
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGIN_FAILED = 'LOGIN_FAILED';
 
-const loginSuccess = payload => ({
+const loginSuccess = user => ({
   type: LOGIN_SUCCESS,
-  payload
+  payload: user
 });
-const loginFailed = payload => ({
+const loginFailed = error => ({
   type: LOGIN_FAILED,
-  payload
+  payload: error
 });
 
 const login = ({accountName, password}) => dispatch => {
@@ -17,7 +18,10 @@ const login = ({accountName, password}) => dispatch => {
     accountName,
     password
   }).then(json => dispatch(loginSuccess(json)))
-    .catch(error => dispatch(loginFailed(error)));
+    .catch((error) => {
+      dispatch(serverError(error));
+      dispatch(loginFailed());
+    });
 };
 
 export {

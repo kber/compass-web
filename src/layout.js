@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import style from './layout.scss';
 import LeftMenu from './components/left-menu';
+import ServerError from './containers/server-error';
+
 
 @connect(
   state => {
@@ -41,6 +43,8 @@ export default class extends Component {
         <footer className={style.footer}>
           Kber &copy; 2015
         </footer>
+
+        <ServerError/>
       </div>
     );
   }
