@@ -39,6 +39,7 @@ module.exports = {
       'react-redux',
       'react-router',
       'redux',
+      'redux-form',
       'redux-router',
       'redux-thunk',
       'whatwg-fetch'

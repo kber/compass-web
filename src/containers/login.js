@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component, PropTypes } from 'react';
+import { reduxForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import Input from 'react-toolbox/lib/input';
 import { Button } from 'react-toolbox/lib/button';
 
@@ -8,30 +9,42 @@ import { login } from '../actions/user';
 
 @connect(
   null,
-  dispatch => bindActionCreators({login}, dispatch)
+  dispatch => bindActionCreators({ login }, dispatch)
 )
+@reduxForm({
+  form: 'login',
+  fields: ['accountName', 'password']
+})
 export default class extends Component {
-  state = {accountName: '', password: ''};
+  static propTypes = {
+    fields: PropTypes.object.isRequired,
+    handleSubmit: PropTypes.func.isRequired
+  };
 
   render() {
+    const {
+      fields: {
+        accountName,
+        password
+      },
+      handleSubmit
+    } = this.props;
+
     return (
-      <div>
+      <form onSubmit={handleSubmit(this.props.login(accountName.value, password.value))}>
         <Input type='text'
                label='Username'
-               value={this.state.accountName}
-               onChange={(value) => this.setState({accountName: value})}
+               {...accountName}
                name='username'/>
         <Input type='password'
                label='Password'
-               value={this.state.password}
-               onChange={(value) => this.setState({password: value})}
+               {...password}
                name='Password'/>
 
         <Button label='Login'
-                onClick={() => this.props.login(this.state.accountName, this.state.password)}
                 raised
                 primary/>
-      </div>
+      </form>
     );
   }
 }
