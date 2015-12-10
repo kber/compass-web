@@ -27,11 +27,12 @@ export default class extends Component {
         accountName,
         password
       },
-      handleSubmit
+      handleSubmit,
+      login
     } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.props.login(accountName.value, password.value))}>
+      <form onSubmit={handleSubmit((data) => login(data))}>
         <Input type='text'
                label='Username'
                {...accountName}

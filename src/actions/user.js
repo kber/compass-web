@@ -1,3 +1,5 @@
+import { post } from '../libs/fetch';
+
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGIN_FAILED = 'LOGIN_FAILED';
 
@@ -10,20 +12,12 @@ const loginFailed = payload => ({
   payload
 });
 
-const login = (accountName, password) => dispatch => {
-  return fetch(`${API_BASE_URL}/v1/users/actions/login`, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      accountName,
-      password
-    })
-  }).then(response => response.json())
-    .then(json => dispatch(loginSuccess(json)))
-    .catch(json => dispatch(loginFailed(json)));
+const login = ({accountName, password}) => dispatch => {
+  return post('/v1/users/actions/login', {
+    accountName,
+    password
+  }).then(json => dispatch(loginSuccess(json)))
+    .catch(error => dispatch(loginFailed(error)));
 };
 
 export {
