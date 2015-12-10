@@ -8,9 +8,9 @@ import Layout from './layout';
 
 export default (
   <ReduxRouter>
-    <Route component={Layout}>
-      <Route path="/home" component={Home}></Route>
-      <Route path="/profile" component={Profile}></Route>
+    <Route path="/" component={Layout}>
+      <Route path="home" component={Home}></Route>
+      <Route path="profile" component={Profile}></Route>
       <IndexRoute component={Home}/>
     </Route>
   </ReduxRouter>

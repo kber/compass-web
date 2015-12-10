@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import AppBar from 'react-toolbox/lib/app_bar';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 import style from './layout.scss';
 import LeftMenu from './components/left-menu';
 
+@connect(
+  state => ({router: state.router})
+)
 export default class extends Component {
   static propTypes = {
     children: React.PropTypes.element
-  }
+  };
 
   render() {
     return (
       <div>
         <AppBar className={style.header}>
-          <a href="/">Compass</a>
+          <Link to="/">Compass</Link>
         </AppBar>
 
         <div className={style.container}>

@@ -16,12 +16,13 @@ const menuConfig = [{
 export default class extends Component {
   static contextTypes = {
     history: PropTypes.history
-  }
+  };
 
   render() {
     const menuItems = menuConfig.map((item) => {
       return (
-        <ListItem caption={item.caption}
+        <ListItem key={item.path}
+                  caption={item.caption}
                   className={this.context.history.isActive(item.path) ? style.active : ''}
                   to={'/#' + item.path}
                   selectable/>
