@@ -13,15 +13,18 @@ const loginFailed = error => ({
   payload: error
 });
 
-const login = ({accountName, password}) => dispatch => {
+const login = ({ accountName, password }) => dispatch => {
   return post('/v1/users/actions/login', {
     accountName,
     password
-  }).then(json => dispatch(loginSuccess(json)))
-    .catch((error) => {
-      dispatch(serverError(error));
-      dispatch(loginFailed());
-    });
+  }).then(json => {
+    dispatch(loginSuccess(json));
+    return json;
+  }).catch(error => {
+    dispatch(serverError(error));
+    dispatch(loginFailed());
+    throw error;
+  });
 };
 
 export {

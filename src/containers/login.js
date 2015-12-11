@@ -7,10 +7,16 @@ import { Button } from 'react-toolbox/lib/button';
 
 import { login } from '../actions/user';
 
-@connect(
-  state => ({serverErrors: state.exception.serverErrors}),
-  dispatch => bindActionCreators({ login }, dispatch)
-)
+const submit = (data, dispath) => {
+  return login(data)(dispath).catch((error) => {
+    let object = {};
+    error.errors.forEach((fieldError) => {
+      object[fieldError.field] = fieldError.message;
+    });
+    throw object;
+  });
+};
+
 @reduxForm({
   form: 'login',
   fields: ['accountName', 'password']
@@ -27,24 +33,17 @@ export default class extends Component {
         accountName,
         password
       },
-      handleSubmit,
-      login,
-      serverErrors
+      handleSubmit
     } = this.props;
 
-    const accountNameError = serverErrors.find((error) => error.field === 'accountName');
-    const passwordError = serverErrors.find((error) => error.field === 'password');
-
     return (
-      <form onSubmit={handleSubmit((data) => login(data))}>
+      <form onSubmit={handleSubmit(submit)}>
         <Input type='text'
                label='Username'
-               error={accountNameError && accountNameError.message}
                name='username'
           {...accountName}/>
         <Input type='password'
                label='Password'
-               error={passwordError && passwordError.message}
                name='Password'
           {...password}/>
 
