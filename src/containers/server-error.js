@@ -30,7 +30,7 @@ export default class extends Component {
       <Snackbar
         action='Dismiss'
         active={this.state.active}
-        icon='question_answer'
+        icon='report_problem'
         label={this.props.serverError}
         timeout={2000}
         onClick={this.hide}

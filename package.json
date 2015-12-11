@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cp src/index.html public/ && NODE_ENV=production webpack",
-    "start": "cp src/index.html public/ && node dev-server.js"
+    "build": "cp -r src/index.html node_modules/material-design-icons/iconfont public/ && NODE_ENV=production webpack",
+    "start": "cp -r src/index.html node_modules/material-design-icons/iconfont public/ && node dev-server.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +15,7 @@
   "dependencies": {
     "classnames": "2.2.1",
     "history": "1.13.1",
+    "material-design-icons": "2.1.1",
     "normalize.css": "3.0.3",
     "react": "0.14.3",
     "react-addons-css-transition-group": "0.14.3",
