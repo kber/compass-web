@@ -1,0 +1,8 @@
+@import "../base";
+@import "~react-toolbox/lib/snackbar/config";
+
+.root {
+  :global(.material-icons) {
+    color: $snackbar-color-warning;
+  }
+}

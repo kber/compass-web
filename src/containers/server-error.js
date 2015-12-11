@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Snackbar from 'react-toolbox/lib/snackbar';
 
+import style from './server-error.scss';
 import { cleanServerError } from '../actions/exception';
 
 @connect(
@@ -28,14 +29,15 @@ export default class extends Component {
   render() {
     return (
       <Snackbar
-        action='Dismiss'
+        className={style.root}
+        action="Dismiss"
         active={this.state.active}
-        icon='report_problem'
+        icon="report_problem"
         label={this.props.serverError}
         timeout={2000}
         onClick={this.hide}
         onTimeout={this.hide}
-        type='cancel'/>
+        type="warning"/>
     );
   }
 }

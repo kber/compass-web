@@ -22,7 +22,7 @@
     "react-dom": "0.14.3",
     "react-redux": "4.0.0",
     "react-router": "1.0.0",
-    "react-toolbox": "0.13.3",
+    "react-toolbox": "0.13.4",
     "redux": "3.0.4",
     "redux-form": "3.1.7",
     "redux-router": "1.0.0-beta5",
