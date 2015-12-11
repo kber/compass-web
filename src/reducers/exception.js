@@ -8,7 +8,7 @@ export default (exception = {
     case SERVER_ERROR:
       const payload = action.payload;
       let newException = {
-        serverErrors: payload.errors
+        serverErrors: payload.errors || []
       };
       if (payload.error) {
         newException.serverError = {
