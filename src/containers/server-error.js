@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Snackbar from 'react-toolbox/lib/snackbar';
 
 import style from './server-error.scss';
-import { cleanServerError } from '../actions/exception';
 
 @connect(
-  state => ({serverError: state.exception.serverError}),
-  dispatch => bindActionCreators({ cleanServerError }, dispatch)
+  state => ({serverError: state.exception.serverError})
 )
 export default class extends Component {
   state = {
@@ -17,13 +14,10 @@ export default class extends Component {
 
   hide = () => {
     this.setState({active: false});
-    this.props.cleanServerError();
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.serverError.length > 0 && nextProps.serverError !== '') {
-      this.setState({active: true});
-    }
+    this.setState({active: true});
   }
 
   render() {
@@ -33,7 +27,7 @@ export default class extends Component {
         action="Dismiss"
         active={this.state.active}
         icon="report_problem"
-        label={this.props.serverError}
+        label={this.props.serverError.message}
         timeout={2000}
         onClick={this.hide}
         onTimeout={this.hide}
