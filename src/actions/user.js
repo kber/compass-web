@@ -1,17 +1,13 @@
+import { createAction } from 'redux-actions';
+
 import { post } from '../libs/fetch';
 import { serverError } from './exception';
 
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGIN_FAILED = 'LOGIN_FAILED';
 
-const loginSuccess = user => ({
-  type: LOGIN_SUCCESS,
-  payload: user
-});
-const loginFailed = error => ({
-  type: LOGIN_FAILED,
-  payload: error
-});
+const loginSuccess = createAction(LOGIN_SUCCESS);
+const loginFailed = createAction(LOGIN_FAILED);
 
 const login = ({ accountName, password }) => dispatch => {
   return post('/v1/users/actions/login', {

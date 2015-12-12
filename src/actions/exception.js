@@ -1,9 +1,8 @@
+import { createAction } from 'redux-actions';
+
 const SERVER_ERROR = 'SERVER_ERROR';
 
-const serverError = (error) => ({
-  type: SERVER_ERROR,
-  payload: error
-});
+const serverError = createAction(SERVER_ERROR);
 
 export {
   SERVER_ERROR,
