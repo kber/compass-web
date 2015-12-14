@@ -6,16 +6,7 @@ import Input from 'react-toolbox/lib/input';
 import { Button } from 'react-toolbox/lib/button';
 
 import { login } from '../actions/user';
-
-const submit = (data, dispath) => {
-  return login(data)(dispath).catch((error) => {
-    let object = {};
-    error.errors.forEach((fieldError) => {
-      object[fieldError.field] = fieldError.message;
-    });
-    throw object;
-  });
-};
+import { submitWithAction } from '../libs/form-submit';
 
 @reduxForm({
   form: 'login',
@@ -37,7 +28,7 @@ export default class extends Component {
     } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(submit)}>
+      <form onSubmit={handleSubmit(submitWithAction(login))}>
         <Input type='text'
                label='Username'
                name='username'

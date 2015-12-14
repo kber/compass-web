@@ -1,5 +1,3 @@
-import { serverError } from '../actions/exception';
-
 const post = async (url, body) => {
   const response = await fetch(`${API_BASE_URL}${url}`, {
     method: 'POST',

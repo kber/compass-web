@@ -1,4 +1,4 @@
-import thunk from 'redux-thunk';
+import api from './middlewares/api';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { reduxReactRouter } from 'redux-router';
 import createHistory from 'history/lib/createHashHistory';
@@ -15,7 +15,7 @@ if (__DEVELOPMENT__) {
       routes,
       createHistory
     }),
-    applyMiddleware(thunk, createLogger())
+    applyMiddleware(api, createLogger())
   )(createStore)(reducers);
 
   if (module.hot) {
@@ -29,7 +29,7 @@ if (__DEVELOPMENT__) {
       routes,
       createHistory
     }),
-    applyMiddleware(thunk)
+    applyMiddleware(api)
   )(createStore)(reducers);
 }
 
