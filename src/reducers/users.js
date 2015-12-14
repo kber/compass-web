@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { LOGIN_SUCCESS } from '../actions/user';
+import { LOGIN_SUCCESS } from '../constants/action-types';
 
 export default handleActions({
   [LOGIN_SUCCESS]: (users, action) => {

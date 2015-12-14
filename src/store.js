@@ -1,8 +1,9 @@
-import api from './middlewares/api';
+import promise from 'redux-promise';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { reduxReactRouter } from 'redux-router';
 import createHistory from 'history/lib/createHashHistory';
 
+import fetch from './middlewares/fetch';
 import reducers from './reducers';
 import routes from './routes';
 
@@ -15,7 +16,7 @@ if (__DEVELOPMENT__) {
       routes,
       createHistory
     }),
-    applyMiddleware(api, createLogger())
+    applyMiddleware(fetch, promise, createLogger())
   )(createStore)(reducers);
 
   if (module.hot) {
@@ -29,7 +30,7 @@ if (__DEVELOPMENT__) {
       routes,
       createHistory
     }),
-    applyMiddleware(api)
+    applyMiddleware(fetch, promise)
   )(createStore)(reducers);
 }
 
