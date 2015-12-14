@@ -1,8 +1,8 @@
 import isPromise from '../libs/is-promise';
 
-const submitWithAction = (action) => {
-  return (data, dispatch) => {
-    const result = dispatch(action(data));
+export default callback => {
+  return data => {
+    const result = callback(data);
     if (result && isPromise(result)) {
       return result.then(({type, payload, meta, error}) => {
         if (error) {
@@ -15,8 +15,4 @@ const submitWithAction = (action) => {
       });
     }
   };
-};
-
-export {
-  submitWithAction
 }

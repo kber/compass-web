@@ -6,12 +6,16 @@ import Input from 'react-toolbox/lib/input';
 import { Button } from 'react-toolbox/lib/button';
 
 import { login } from '../actions/user';
-import { submitWithAction } from '../libs/form-submit';
+import submit from '../libs/submit';
+import isPromise from '../libs/is-promise';
 
 @reduxForm({
   form: 'login',
   fields: ['accountName', 'password']
-})
+},
+  null,
+  dispatch => bindActionCreators({ login }, dispatch)
+)
 export default class extends Component {
   static propTypes = {
     fields: PropTypes.object.isRequired,
@@ -24,11 +28,12 @@ export default class extends Component {
         accountName,
         password
       },
-      handleSubmit
+      handleSubmit,
+      login
     } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(submitWithAction(login))}>
+      <form onSubmit={handleSubmit(submit(login))}>
         <Input type='text'
                label='Username'
                name='username'
