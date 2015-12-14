@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import { post } from '../libs/fetch';
+import { login as loginAPI } from '../libs/api';
 import { serverError } from './exception';
 
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -10,7 +10,7 @@ const loginSuccess = createAction(LOGIN_SUCCESS);
 const loginFailed = createAction(LOGIN_FAILED);
 
 const login = ({ accountName, password }) => dispatch => {
-  return post('/v1/users/actions/login', {
+  return loginAPI({
     accountName,
     password
   }).then(json => {
