@@ -1,8 +1,20 @@
 import { handleActions } from 'redux-actions';
 
-import { LOGIN_FAILED, LOGIN_SUCCESS } from '../constants/action-types';
+import { LOGIN } from '../constants/action-types';
+
+const defaultValue = {
+  isLogin: false,
+  id: null
+};
 
 export default handleActions({
-  [LOGIN_FAILED]: () => ({isLogin: false, id: null}),
-  [LOGIN_SUCCESS]: (currentUser, action) => ({isLogin: true, id: action.payload.id})
-}, {isLogin: false, id: null});
+  [LOGIN]: (currentUser, action) => {
+    if (action.error) {
+      return defaultValue;
+    }
+    return {
+      isLogin: true,
+      id: action.payload.id
+    };
+  }
+}, defaultValue);
