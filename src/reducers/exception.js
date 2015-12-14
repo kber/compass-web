@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { SERVER_ERROR, CLEAN_SERVER_ERROR } from '../actions/exception';
+import { SERVER_ERROR } from '../constants/action-types';
 
 export default handleActions({
   [SERVER_ERROR]: (exception, action) => {
