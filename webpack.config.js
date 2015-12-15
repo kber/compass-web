@@ -75,7 +75,7 @@ module.exports = {
       )
     }, {
       test: /\.(woff2|woff|ttf|eot|svg)$/,
-      loader: 'file-loader'
+      loader: 'file-loader?name=[name].[ext]'
     }]
   },
 

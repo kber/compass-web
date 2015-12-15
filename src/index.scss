@@ -25,3 +25,6 @@
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+
+$roboto-font-path: 'roboto-fontface/fonts';
+@import "~roboto-fontface/css/roboto-fontface";
