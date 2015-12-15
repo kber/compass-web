@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Input from 'react-toolbox/lib/input';
 import { Button } from 'react-toolbox/lib/button';
@@ -14,7 +13,7 @@ import isPromise from '../libs/is-promise';
   fields: ['accountName', 'password']
 },
   null,
-  dispatch => bindActionCreators({ login }, dispatch)
+  { login }
 )
 export default class extends Component {
   static propTypes = {
