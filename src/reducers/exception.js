@@ -4,7 +4,7 @@ import { SERVER_ERROR } from '../constants/action-types';
 
 export default handleActions({
   [SERVER_ERROR]: (exception, action) => {
-    const error = action.payload.error;
+    const error = action.payload.error || action.payload.message;
     if (!error) {
       return exception;
     }
