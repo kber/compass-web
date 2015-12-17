@@ -4,6 +4,7 @@ const browserSync = require('browser-sync');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const connectHistoryApiFallback = require('connect-history-api-fallback');
 
 let webpackConfig = require('./webpack.config');
 
@@ -48,7 +49,8 @@ browserSync({
         publicPath: webpackConfig.output.publicPath,
         stats: webpackConfig.stats
       }),
-      webpackHotMiddleware(compiler)
+      webpackHotMiddleware(compiler),
+      connectHistoryApiFallback()
     ]
   }
 });

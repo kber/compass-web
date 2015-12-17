@@ -39,6 +39,7 @@
     "babel-runtime": "5.8.34",
     "browser-sync": "2.10.0",
     "config": "1.17.1",
+    "connect-history-api-fallback": "1.1.0",
     "css-loader": "0.23.0",
     "eslint": "1.10.3",
     "eslint-config-airbnb": "2.0.0",

@@ -22,12 +22,14 @@ export default class extends Component {
   };
 
   render() {
+    const { history } = this.context;
+
     const menuItems = menuConfig.map((item) => {
       return (
         <ListItem key={item.path}
                   caption={item.caption}
-                  className={this.context.history.isActive(item.path) ? style.active : ''}
-                  to={'/#' + item.path}
+                  className={history.isActive(item.path) ? style.active : ''}
+                  onClick={() => history.push(item.path)}
                   selectable/>
       );
     });

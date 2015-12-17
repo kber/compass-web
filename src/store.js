@@ -1,7 +1,7 @@
 import promise from 'redux-promise';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { reduxReactRouter } from 'redux-router';
-import createHistory from 'history/lib/createHashHistory';
+import createHistory from 'history/lib/createBrowserHistory';
 
 import fetch from './middlewares/fetch';
 import reducers from './reducers';
