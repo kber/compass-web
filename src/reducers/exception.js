@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { SERVER_ERROR } from '../constants/action-types';
+import { SERVER_ERROR, HIDE_SERVER_ERROR } from '../constants/action-types';
 
 export default handleActions({
   [SERVER_ERROR]: (exception, action) => {
@@ -11,10 +11,16 @@ export default handleActions({
     return Object.assign({}, exception, {
       serverError: {
         message: error,
-        times: exception.serverError.times + 1
+        visible: true
       }
     })
-  }
+  },
+  [HIDE_SERVER_ERROR]: (exception, action) => Object.assign({}, exception, {
+    serverError: {
+      message: '',
+      visible: false
+    }
+  })
 }, {
   serverError: {message: '', times: 0},
   serverErrors: []

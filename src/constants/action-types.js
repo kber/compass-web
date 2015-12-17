@@ -1,9 +1,4 @@
-const LOGIN = 'LOGIN';
+export const LOGIN = 'LOGIN';
 
-const SERVER_ERROR = 'SERVER_ERROR';
-
-export {
-  LOGIN,
-
-  SERVER_ERROR
-}
+export const SERVER_ERROR = 'SERVER_ERROR';
+export const HIDE_SERVER_ERROR = 'HIDE_SERVER_ERROR';

@@ -41,7 +41,7 @@ export default class extends Component {
         <ListItem key={path}
                   caption={caption}
                   className={itemClass(path, onlyActiveOnIndex, history)}
-                  onClick={() => history.push(item.path)}
+                  onClick={() => history.push(path)}
                   selectable/>
       );
     });

@@ -2,35 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Snackbar from 'react-toolbox/lib/snackbar';
 
+import { hideServerError } from '../actions/exception';
 import style from './server-error.scss';
 
 @connect(
-  state => ({serverError: state.exception.serverError})
+  state => ({serverError: state.exception.serverError}),
+  { hideServerError }
 )
 export default class extends Component {
-  state = {
-    active: false
-  };
-
-  hide = () => {
-    this.setState({active: false});
-  };
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({active: true});
-  }
-
   render() {
+    const {
+      serverError: { visible, message },
+      hideServerError
+    } = this.props;
+
     return (
       <Snackbar
         className={style.root}
         action="Dismiss"
-        active={this.state.active}
+        active={visible}
         icon="report_problem"
-        label={this.props.serverError.message}
+        label={message}
         timeout={2000}
-        onClick={this.hide}
-        onTimeout={this.hide}
+        onClick={() => hideServerError()}
+        onTimeout={() => hideServerError()}
         type="warning"/>
     );
   }

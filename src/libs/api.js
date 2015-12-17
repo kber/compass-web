@@ -15,11 +15,9 @@ const post = async (url, body) => {
   }
 };
 
-const login = async ({ accountName, password }) => {
+export const login = async ({ accountName, password }) => {
   return await post('/v1/users/actions/login', {
     accountName,
     password
   });
 };
-
-export { login }
