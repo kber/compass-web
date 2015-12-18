@@ -57,7 +57,7 @@ module.exports = {
 
   cache: DEBUG,
   debug: DEBUG,
-  devtool: DEBUG ? 'cheap-module-eval-source-map' : false,
+  devtool: DEBUG ? 'cheep-source-map' : false,
 
   resolve: {
     extensions: ['', '.js', '.scss']
@@ -71,7 +71,8 @@ module.exports = {
     }, {
       test: /\.scss$/,
       loader: ExtractTextPlugin.extract(
-        'css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]' + (DEBUG ? '&sourceMap' : '') + '!sass'
+        'css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]' + (DEBUG ? '&sourceMap' : '') +
+        '!sass'
       )
     }, {
       test: /\.(woff2|woff|ttf|eot|svg)$/,
