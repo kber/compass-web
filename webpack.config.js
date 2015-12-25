@@ -3,7 +3,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const config = require('config');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const DEBUG = process.env.NODE_ENV !== 'production';
 const VERBOSE = false;
@@ -14,7 +13,6 @@ let plugins = [
     API_BASE_URL: JSON.stringify(config.API_BASE_URL)
   }),
   new webpack.optimize.CommonsChunkPlugin('vendor', '[name].js'),
-  new ExtractTextPlugin('app', '[name].css'),
   new webpack.optimize.LimitChunkCountPlugin({
     maxChunks: 1
   })
@@ -51,7 +49,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'public/__built__'),
-    publicPath: '/__built__/',
+    publicPath: config.DOMAIN + '/__built__/',
     filename: '[name].js'
   },
 
@@ -70,10 +68,7 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract(
-        'css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]' + (DEBUG ? '&sourceMap' : '') +
-        '!sass'
-      )
+      loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]' + (DEBUG ? '&sourceMap' : '') + '!sass'
     }, {
       test: /\.(woff2|woff|ttf|eot|svg)$/,
       loader: 'file-loader?name=[name].[ext]'
