@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { routerStateReducer } from 'redux-router';
+import { routeReducer } from 'redux-simple-router';
 import { reducer as formReducer } from 'redux-form';
 
 import users from './users';
@@ -7,7 +7,7 @@ import currentUser from './current-user';
 import exception from './exception';
 
 export default combineReducers({
-  router: routerStateReducer,
+  routing: routeReducer,
   form: formReducer,
   exception,
   currentUser,
